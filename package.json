@@ -58,7 +58,7 @@
     "lodash": "^4.17.15",
     "qs": "^6.9.1",
     "react": "16.11.0",
-    "react-native": "0.62.2",
+    "react-native": "0.62.3",
     "react-native-cached-image": "git+https://github.com/fungilation/react-native-cached-image.git",
     "react-native-device-info": "^5.4.0",
     "react-native-extended-stylesheet": "^0.12.0",
