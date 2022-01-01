@@ -5,14 +5,11 @@ import ButtonStyle from '@ant-design/react-native/lib/button/style/index';
 // import EStyleSheet from 'react-native-extended-stylesheet';
 
 const styles = {
-  ...ButtonStyle,
-  // defaultRaw: {
-  //   backgroundColor: EStyleSheet.value('$mainColor'),
-  // },
+  ...ButtonStyle
 };
 
 export default class Button extends Component<ButtonProps, any> {
   render() {
-    return <AntdButton {...this.props} styles={styles} />;
+    return <AntdButton {...this.props} styles={{ ...styles, ...this.props.styles }} />;
   }
 }

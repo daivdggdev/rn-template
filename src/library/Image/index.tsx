@@ -18,7 +18,7 @@ export interface ImageProps
 export default class Image extends Component<ImageProps, any> {
   static defaultProps = {
     type: 'normal',
-    fitProps: { indicator: true },
+    fitProps: { indicator: true }
   };
 
   render() {

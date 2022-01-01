@@ -5,6 +5,7 @@ declare module '*.less' {
   export default content;
 }
 
+// declare var global: any;
 declare var API_PREFIX: string;
 
 declare module 'react-native-extra-dimensions-android';

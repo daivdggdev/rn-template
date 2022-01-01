@@ -41,8 +41,7 @@ export interface ReduxSagaTaker {
   [propsName: string]: any;
 }
 // problem
-export interface DvaModelEffectWithTaker
-  extends Array<ReduxSagaTaker | DvaModelEffectFn> {
+export interface DvaModelEffectWithTaker extends Array<ReduxSagaTaker | DvaModelEffectFn> {
   [index: number]: ReduxSagaTaker | DvaModelEffectFn;
 }
 

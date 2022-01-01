@@ -4,7 +4,7 @@ import { SearchBarProps } from '@ant-design/react-native/lib/search-bar';
 import SearchBarStyle from '@ant-design/react-native/lib/search-bar/style';
 
 const styles = {
-  ...SearchBarStyle,
+  ...SearchBarStyle
 };
 
 export default class SearchBar extends Component<SearchBarProps, any> {

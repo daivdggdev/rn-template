@@ -30,29 +30,26 @@ const wrapper = (data: any) => {
     success: true,
     code: 200,
     msg: '',
-    value: data,
+    value: data
   };
 };
 
-export default function() {
+export default function () {
   if (isEmpty(mocks)) {
     return;
   }
 
-  mocks.forEach(item => {
+  mocks.forEach((item) => {
     if (!isPlainObject(item)) {
       console.error('mocks item is not object');
       return;
     }
 
     const keys = Object.keys(item);
-    keys.forEach(key => {
+    keys.forEach((key) => {
       const option = gen(key);
       let { method, url } = option;
-      const func =
-        method.toLowerCase() === 'get'
-          ? mock.onGet.bind(mock)
-          : mock.onPost.bind(mock);
+      const func = method.toLowerCase() === 'get' ? mock.onGet.bind(mock) : mock.onPost.bind(mock);
 
       // 兼容restful风格接口
       url = url.replace(':id', '1');

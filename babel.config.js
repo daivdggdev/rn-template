@@ -7,12 +7,12 @@ module.exports = {
       {
         root: ['./'],
         alias: {
-          '@': './src',
+          '@': './src'
         },
-        extensions: ['.js', '.ts', '.tsx', '.ios.js', '.android.js'],
-      },
+        extensions: ['.js', '.ts', '.tsx', '.ios.js', '.android.js']
+      }
     ],
     ['import', { libraryName: '@ant-design/react-native' }],
-    '@babel/plugin-transform-runtime',
-  ],
+    '@babel/plugin-transform-runtime'
+  ]
 };

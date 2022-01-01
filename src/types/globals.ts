@@ -8,9 +8,11 @@ export interface BaseProps {
 }
 
 import { State as AppState } from '@/models/app';
+import { State as SectionState } from '@/models/section';
 import { DvaLoading } from './dva';
 
 export interface WholeState {
   app: AppState;
+  section: SectionState;
   loading: DvaLoading;
 }

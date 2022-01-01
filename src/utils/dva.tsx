@@ -8,15 +8,20 @@ import { DvaModel } from '../types/dva';
 
 export { connect };
 
-export default function(options: any) {
-  const app = create(options);
+let app: any = null;
+export default function (options: any) {
+  if (app) {
+    return;
+  }
+
+  app = create(options);
 
   // Plugins
   app.use(createDvaImmer());
   app.use({
     ...createLoading({
-      effects: true,
-    }),
+      effects: true
+    })
   });
 
   // HMR workaround
@@ -28,10 +33,12 @@ export default function(options: any) {
   app.start();
   const store = app._store;
 
-  app.start = (container: ReactNode) => () => (
-    <Provider store={store}>{container}</Provider>
-  );
+  app.start = (container: ReactNode) => () => <Provider store={store}>{container}</Provider>;
   app.getStore = () => store;
 
+  return app;
+}
+
+export function getDva() {
   return app;
 }

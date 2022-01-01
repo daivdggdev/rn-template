@@ -1,3 +1,3 @@
 export default {
-  getUser: 'GET /user',
+  getMusicList: 'GET /music/list'
 };

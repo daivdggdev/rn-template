@@ -17,13 +17,13 @@ const gen = (params: string) => {
     url = paramsArray[1];
   }
 
-  return function(data: object, config: AxiosRequestConfig = {}): Promise<any> {
+  return function (data: object, config: AxiosRequestConfig = {}): Promise<any> {
     return request({
       baseURL: apiPrefix,
       url,
       data,
       method,
-      ...config,
+      ...config
     });
   };
 };

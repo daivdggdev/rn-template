@@ -1,4 +1,4 @@
 export default {
   defaultTheme: 'light',
-  apiPrefix: 'http://172.16.0.132:8080',
+  apiPrefix: 'http://localhost:1337/api/v1'
 };

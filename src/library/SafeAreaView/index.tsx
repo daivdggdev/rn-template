@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import * as ReactNavigation from 'react-navigation';
+import {
+  SafeAreaView as RNSafeAreaView,
+  NativeSafeAreaViewProps
+} from 'react-native-safe-area-context';
 
-export interface SafeAreaViewProps extends ReactNavigation.SafeAreaViewProps {}
+export interface SafeAreaViewProps extends NativeSafeAreaViewProps {}
 
 export default class SafeAreaView extends Component<SafeAreaViewProps, any> {
   render() {
-    return <ReactNavigation.SafeAreaView {...this.props} />;
+    return <RNSafeAreaView edges={['bottom']} {...this.props} />;
   }
 }

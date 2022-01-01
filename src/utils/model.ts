@@ -10,10 +10,10 @@ const commonModel = {
     updateState(state: CommonState, { payload }: ReduxAction) {
       return {
         ...state,
-        ...payload,
+        ...payload
       };
-    },
-  },
+    }
+  }
 };
 
 const commonExtend = <T>(model: DvaModel<T>) => modelExtend(commonModel, model);

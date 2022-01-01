@@ -5,7 +5,7 @@ import AccordionStyle from '@ant-design/react-native/lib/accordion/style';
 import Panel from './Panel';
 
 const styles = {
-  ...AccordionStyle,
+  ...AccordionStyle
 };
 
 export default class Accordion extends Component<

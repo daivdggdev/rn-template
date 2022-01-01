@@ -1,12 +1,8 @@
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
-import { cloneDeep, isEmpty } from 'lodash';
+import { cloneDeep } from 'lodash';
 import { MetadataObj } from './type';
 import pathToRegexp from 'path-to-regexp';
-import {
-  CANCEL_REQUEST_MESSAGE,
-  ERROR_REQUEST_MESSAGE,
-} from '@/utils/constant';
-import qs from 'qs';
+import { CANCEL_REQUEST_MESSAGE, ERROR_REQUEST_MESSAGE } from '@/utils/constant';
 
 /* eslint-disable */
 const SYSTEM_ERROR = 9001; // 系统异常
@@ -34,34 +30,32 @@ export interface ResponseData {
  * @param {object} options 请求选项
  * @returns {Promise} 请求结果
  */
-export default function request(
-  options: AxiosRequestConfig,
-): Promise<ResponseData | undefined> {
+export default function request(options: AxiosRequestConfig): Promise<ResponseData | undefined> {
   const { data, url, method = 'get' } = options;
   if (!url) {
     throw new Error('request url none');
   }
 
   const cloneData = cloneDeep(data);
-  const newUrl = matchRestfulUrl(url, cloneData);
-
-  options.url =
-    method.toLocaleLowerCase() === 'get'
-      ? `${newUrl}${isEmpty(cloneData) ? '' : '?'}${qs.stringify(cloneData)}`
-      : newUrl;
+  options.url = matchRestfulUrl(url, cloneData);
 
   // session
   options.headers = {
-    'Content-Type': 'application/json;charset=UTF-8',
+    'Content-Type': 'application/json;charset=UTF-8'
   };
+
+  if (method.toLocaleLowerCase() === 'get') {
+    options.params = options.data;
+    delete options.data;
+  }
 
   console.log('options: ', options);
   return axios(options)
-    .then(response => {
+    .then((response) => {
       if (options.responseType === 'blob') {
         return Promise.resolve({
           success: true,
-          data: response.data,
+          data: response.data
         });
       }
 
@@ -73,7 +67,7 @@ export default function request(
           success: success,
           message: msg,
           statusCode: code,
-          data: value || {},
+          data: value || {}
         });
       }
     })
@@ -82,7 +76,7 @@ export default function request(
       if (String(message) === CANCEL_REQUEST_MESSAGE) {
         return {
           success: false,
-          message: CANCEL_REQUEST_MESSAGE,
+          message: CANCEL_REQUEST_MESSAGE
         };
       }
 
@@ -105,7 +99,7 @@ export default function request(
       return {
         success: false,
         statusCode,
-        message: msg,
+        message: msg
       };
     });
 }
